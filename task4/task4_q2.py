@@ -157,10 +157,25 @@ if __name__ == '__main__':
     assert len(findAllStates(Arr, 2, 2)[0]) is 4
     Arr = [[11, 22, 33], [11, 22, 44], [55, 33, 0]]
     assert len(findAllStates(Arr, 3, 3)[0]) is 27
+    bestState = findAllStates(Arr, 3, 3)[1]
+    currState = State([55, 22,44], 3)
+    assert bestState == currState
     Arr = [[1, 1], [2, 2], [1, 1]]
     assert len(findAllStates(Arr, 2, 3)[0]) is 8
+    bestState = findAllStates(Arr, 2, 3)[1]
+    currState = State([2, 2], 3)
+    assert bestState == currState
     Arr = [[1, 1], [2, 2], [3, 3], [1, 1], [2, 2]]
     assert len(findAllStates(Arr, 2, 5)[0]) is 32
+    bestState = findAllStates(Arr, 2, 5)[1]
+    currState = State([4, 5], 5)
+    assert bestState == currState
+    Arr = [[1, 1], [6, 6], [3, 3], [4, 4], [10, 10],[1,1],[8,8],[5,5]]
+    assert len(findAllStates(Arr, 2, 8)[0]) is 256
+    bestState = findAllStates(Arr, 2, 8)[1]
+    currState = State([19, 19], 8)
+    assert bestState == currState
+
 
     # check findAllStatesWithChop
     Arr = [[2, 2], [2, 2]]
@@ -171,3 +186,5 @@ if __name__ == '__main__':
     assert len(findAllStatesWithChop(Arr, 2, 3)[0]) is 5
     Arr = [[1, 1], [2, 2], [3, 3], [1, 1], [2, 2]]
     assert len(findAllStatesWithChop(Arr, 2, 5)[0]) is 10
+    Arr = [[1, 1], [6, 6], [3, 3], [4, 4], [10, 10],[1,1],[8,8],[5,5]]
+    assert len(findAllStatesWithChop(Arr, 2, 8)[0]) is 39
