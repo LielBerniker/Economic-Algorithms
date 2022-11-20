@@ -2,6 +2,9 @@ from typing import List
 import copy
 
 
+# ----------------------------------------------
+# -----------------State-class------------------
+# ----------------------------------------------
 # class of the a state, contains the current value for each player and the number of items that have been distribute
 class State:
     def __init__(self, allValues: List[int], item: int):
@@ -23,11 +26,11 @@ class State:
     def __eq__(self, other):
         if isinstance(other, State) is False:
             return False
+        if self.item != other.item:
+            return False
         for i in range(len(self.allValues)):
             if self.allValues[i] != other.allValues[i]:
                 return False
-        if self.item != other.item:
-            return False
         return True
 
 
@@ -52,7 +55,9 @@ def maxOfMin(finalStates: List[State]):
     return currState
 
 
-# ---------------- q1-----------------------
+# ----------------------------------------------
+# ---------------------Q1-----------------------
+# ----------------------------------------------
 # search in the state space, and return all the available final states and the state with the max minimum
 def findAllStates(playersValues, playersAmount: int, itemsAmount: int):
     allStates = []
@@ -87,7 +92,9 @@ def findAllStatesInner(finalStates: List[State], allStates: List[State], players
                            currState)
 
 
-# ---------------- q2-----------------------
+# ----------------------------------------------
+# ---------------------Q2-----------------------
+# ----------------------------------------------
 # check if a current state is in the state list
 def findState(allStates: List[State], currState: State):
     for i in range(len(allStates)):
