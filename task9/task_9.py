@@ -108,7 +108,7 @@ def Show_Graph(graph: nx.Graph, color_map: List[str]):
 # subjects_list_budget
 # the function fill the list with the values of the budget for each subject by the correct
 # location of the subject
-def Create_Budget_list(subjects: List[str], subjects_list_budget: List[float], subjects_full_budget: Dict[str, int]):
+def Create_Budget_list(subjects: List[str], subjects_list_budget: List[float], subjects_full_budget: Dict[str,float]):
     print_str = "("
     for i in range(len(subjects)):
         cur_score = 0
@@ -144,6 +144,25 @@ if __name__ == '__main__':
     player_num2 = len(preferences02)
     Get_Subjects_Score(preferences02, subjects_score02, player_num2, graph2)
     assert str(subjects_score02) == "{'school': 3, 'mall': 3, 'roads': 3, 'parks': 3, 'events': 3}"
+
+    # check Create_Budget_list function
+    subjects_list_budget10 = []
+    subjects10 = ["food", "sport", "sleep"]
+    subjects_full_budget10 = {'food': 250.0, 'sport': 250.0, 'sleep': 500.0}
+    Create_Budget_list(subjects10,subjects_list_budget10,subjects_full_budget10)
+    assert str(subjects_list_budget10) == "[250.0, 250.0, 500.0]"
+
+    subjects_list_budget11 = []
+    subjects11 = ["pool", "gym", "jacuzzi", "sauna", "spa", "showers"]
+    subjects_full_budget11 = {'gym': 400.0, 'sauna': 400.0}
+    Create_Budget_list(subjects11,subjects_list_budget11,subjects_full_budget11)
+    assert str(subjects_list_budget11) == "[0, 400.0, 0, 400.0, 0, 0]"
+
+    subjects_list_budget12 = []
+    subjects12 = ["school", "mall", "roads", "parks", "events"]
+    subjects_full_budget12 = {'school': 510.4, 'mall': 510.4, 'roads': 510.4, 'parks': 510.4, 'events': 510.4}
+    Create_Budget_list(subjects12,subjects_list_budget12,subjects_full_budget12)
+    assert str(subjects_list_budget12) == "[510.4, 510.4, 510.4, 510.4, 510.4]"
 
     # check Otilitery_Budget function
     total0 = 1000
